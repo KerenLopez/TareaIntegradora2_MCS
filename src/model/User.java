@@ -65,18 +65,19 @@ public class User{
 
 	//Methods
 
-	public void changeUserCategory(){
-		int numSongsAddToPool = getNumSongsAddToPool();
-		switch(numSongsAddToPool){
-			case 3 :
-				setUserCategory(Category.LITTLE_CONTRIBUTOR)
-				break;
-			case 10 :
-				setUserCategory(Category.MILD_CONTRIBUTOR);
-				break;
-			case 30 :
-				setUserCategory(Category.STAR_CONTRIBUTOR);
-				break;	
+	public void numSongsPool(){
+		setNumSongs(getNumSongsAddToPool()+1);
+	}
+
+	public void changeUserCategory(){ 
+		if(numSongsAddToPool >= 3){
+			setUserCategory(Category.LITTLE_CONTRIBUTOR);
+		}
+		if(numSongsAddToPool >=10){
+			setUserCategory(Category.MILD_CONTRIBUTOR);
+		}
+		if(numSongsAddToPool >=30){
+			setUserCategory(Category.STAR_CONTRIBUTOR);
 		}
 	}
 }

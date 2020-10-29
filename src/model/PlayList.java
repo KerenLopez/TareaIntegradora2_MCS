@@ -3,25 +3,30 @@ package model;
 public class PlayList{
 
 	//Atributes
-	private String name;
-	private int duration;
+	protected String name;
+	protected int[] minutes;
+	protected int[] seconds;
 
 	//Constants
 	public final static int NUM_GENRES = 7; 
 
 	//Relationships
-	private Genre[] genres;
-	private Song[] songs;
+	protected Genre[] genres;
+	protected Song[] songs;
 
-	//Methods
+	//Methods 
 
-	public PlayList(String pName, int pDuration){
+	public PlayList(String pName, int[] pMinutes, int[] pSeconds){
 		name = pName;
-		duration = pDuration;
+		minutes = pMinutes;
+		seconds = pSeconds; 
 		genres = new Genre[NUM_GENRES];
 		songs = new Song[MCS.MAX_NUM_SONGS];
 	}
 
+	public void addSongToPlaylist(User nameUser, Song nameSong){
+
+	}
 	//Getters & Setters
 
 	public String getName(){
@@ -32,12 +37,20 @@ public class PlayList{
 		name = pName;
 	}
 
-	public int getDuration(){
-		return duration;
+	public int[] getMinutes(){
+		return minutes;
 	}
 
-	public void setDuration(int pDuration){
-		duration = pDuration;
+	public void setMinutes(int[] pMinutes){
+		minutes = pMinutes;
+	}
+
+	public int[] getSeconds(){
+		return seconds;
+	}
+
+	public void setSeconds(int[] pSeconds){
+		seconds = pSeconds;
 	}
 
 	public Genre[] getGenres(){
