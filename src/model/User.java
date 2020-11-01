@@ -11,7 +11,80 @@ public class User{
 	//Relationships
 	private Category userCategory;
 
-	//Builder Method
+	//Getters and Setters of all the atributes or relationships
+
+	/**
+	* This method returns the user's name. <br>
+	* @return out a <code> String </code> variable that contains the user's name.
+	*/
+	public String getUserName(){
+		return userName;
+	}
+	/**
+	* this method modifies the user's name. <br>
+	* <b>post</b>: the user's name has been changed. <br>
+	* @param pUserName is a String variable.
+	*/
+	public void setUserName(String pUserName){
+		userName = pUserName;
+	}
+	/**
+	* This method returns the user's password. <br>
+	* @return out a <code> String </code> variable that contains the user's password.
+	*/
+	public String getPassword(){
+		return password;
+	}
+	/**
+	* this method modifies the user's password. <br>
+	* <b>post</b>: the user's password has been changed. <br>
+	* @param pPassword is a String variable.
+	*/
+	public void setPassword(String pPassword){
+		password = pPassword;
+	}
+	/**
+	* This method returns the user's age. <br>
+	* @return out an <code> integer </code> variable that contains the user's age.
+	*/
+	public int getAge(){
+		return age;
+	}
+	/**
+	* this method modifies the user's age. <br>
+	* <b>post</b>: the user's age has been changed. <br>
+	* @param pAge is an integer variable.
+	*/
+	public void setAge(int pAge){
+		age = pAge;
+	}
+	/**
+	* This method returns the user's category. <br>
+	* @return out an <code> Category </code> object that contains the user's rank.
+	*/
+	public Category getUserCategory(){
+		return userCategory;
+	}
+	/**
+	* this method modifies the user's category. <br>
+	* <b>post</b>: the user's rank has been changed. <br>
+	* @param pUserCategory is a Category object.
+	*/
+	public void setUserCategory(Category pUserCategory){
+		userCategory = pUserCategory;
+	}
+
+	//Methods
+
+	/**
+	* Builder method <br>
+	* <b>name</b>: User <br>
+	* <b>pre</b>: the variables pUserName, pPassword and pAge are already inicializated. <br>
+	* <b>post</b>: the relationships and all the atributes of the class were inicializated. <br>
+	* @param pUserName is a String variable that.
+	* @param pPassword is a String variable that.
+	* @param pAge is an integer variable that.
+	*/
 	public User(String pUserName, String pPassword, int pAge){
 		userName = pUserName;
 		password = pPassword;
@@ -19,57 +92,13 @@ public class User{
 		userCategory = Category.NEWBIE;
 		numSongsAddToPool = 0;
 	}
-	//End Builder Method
-
-	//Getters & Setters of all the atributes or relationships
-
-	public String getUserName(){
-		return userName;
-	}
-
-	public void setUserName(String pUserName){
-		userName = pUserName;
-	}
-
-	public String getPassword(){
-		return password;
-	}
-
-	public void setPassword(String pPassword){
-		password = pPassword;
-	}
-
-	public int getAge(){
-		return age;
-	}
-
-	public void setAge(int pAge){
-		age = pAge;
-	}
-
-	public int getNumSongsAddToPool(){
-		return numSongsAddToPool;
-	}
-
-	public void setNumSongsAddToPool(int pNumSongsAddToPool){
-		numSongsAddToPool = pNumSongsAddToPool;
-	}
-
-	public Category getUserCategory(){
-		return userCategory;
-	}
-
-	public void setUserCategory(Category pUserCategory){
-		userCategory = pUserCategory;
-	}
-
-	//Methods
-
-	public void numSongsPool(){
-		setNumSongs(getNumSongsAddToPool()+1);
-	}
-
+	/**
+	* this method . <br>
+	* <b>post</b>: the category of the user has been changed. <br>
+	*/
 	public void changeUserCategory(){ 
+		numSongsAddToPool+=1;
+
 		if(numSongsAddToPool >= 3){
 			setUserCategory(Category.LITTLE_CONTRIBUTOR);
 		}

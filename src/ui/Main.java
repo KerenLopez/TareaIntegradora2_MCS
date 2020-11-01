@@ -1,5 +1,5 @@
 package ui;
-import model.*;
+import model.MCS;
 import java.util.Scanner;
 
 public class Main{
@@ -143,7 +143,7 @@ public class Main{
 	public void addUser(){
 		String name = "", password, message;
 		int age;
-		boolean correct, exist = true;
+		boolean correct;
 		System.out.println(
 			"\n**********************************************************************************\n"+
 			"                                    Crear un usuario"+
@@ -163,18 +163,13 @@ public class Main{
 					System.out.println("\nEl nombre de usuario ingresado contiene un espacio en blanco, digitelo nuevamente");
 				}
 			} while(!correct);
-			exist = mainMCS.verifyUser(name);
-			if(exist==true){
-				System.out.println("\nEl nombre de usuario ingresado ya esta en uso, pruebe con otro");
-			}
-		} while(exist);
-
-		System.out.println("\nIngrese una contrasenia: ");
-		password = lector.nextLine();
-		System.out.println("\nIngrese su edad: ");
-		age = lector.nextInt();
-		message = mainMCS.createUser(name, password, age);
-		System.out.println("\n"+message);
+			System.out.println("\nIngrese una contrasenia: ");
+			password = lector.nextLine();
+			System.out.println("\nIngrese su edad: ");
+			age = lector.nextInt();
+			message = mainMCS.createUser(name, password, age);
+			System.out.println("\n"+message);
+		} while(message.equals("El usuario ya se encuentra registrado, intentelo nuevamente"));
 	}
 
 	public void displayUsers(){
@@ -192,22 +187,15 @@ public class Main{
 		int mins, secs, genre = 0;
 		int[] minutes = new int [MCS.MAX_NUM_SONGS];
 		int[] seconds = new int [MCS.MAX_NUM_SONGS];
-		boolean access = true;
 		System.out.println(
 			"\n**********************************************************************************\n"+
 			"                       Agregar una cancion al Pool de canciones"+
 			"\n**********************************************************************************\n"
 		);
-		do{
+		do{	
 			System.out.println("Ingrese su nombre de usuario: ");
 			nameUser = lector.nextLine();
-			access = mainMCS.verifyUser(nameUser);
-			if(!access){
-				System.out.println("\nEl nombre de usuario ingresado no existe, digitelo nuevamente");
-			}
-		} while(!access);
-		do{	
-			System.out.println("\nIngrese el titulo de la cancion: ");
+			System.out.println("\nIngrese el titulo de la cancion que desea agregar: ");
 			title = lector.nextLine();
 			System.out.println("\nIngrese el nombre del artista o banda al que pertenece la cancion: ");
 			artist = lector.nextLine();
@@ -239,8 +227,8 @@ public class Main{
 				}
 			} while(genre!=1 && genre!=2 && genre!=3 && genre!=4 && genre!=5 && genre!=6);
 			message = mainMCS.addSongsToPool(nameUser,title, artist, date, minutes, seconds, genre);
-			System.out.println("\n"+message);
-		} while(message.equals("La cancion ya se encuentra registrada, intentelo nuevamente"));		
+			System.out.println(message);
+		} while(message.equals("La cancion ya se encuentra registrada, intentelo nuevamente")|| message.equals("El usuario ingresado no existe, intentelo nuevamente"));		
 	}
 
 	public void displayPoolSongs(){
@@ -256,7 +244,6 @@ public class Main{
 	public void createPlaylist(){
 		int option;
 		String nameUser, namePlaylist, authorizedUser, message;
-		boolean access = true;
 		String[] nameUsersPlaylistR = new String[RestrictedPL.MAX_NUM_USERS];
 		System.out.println(
 			"\n**********************************************************************************\n"+
@@ -273,74 +260,42 @@ public class Main{
 				do{
 					System.out.println("\nIngrese su nombre de usuario: ");
 					nameUser = lector.nextLine();
-					access = mainMCS.verifyUser(nameUser);
-					if(!access){
-						System.out.println("\nEl nombre de usuario ingresado no existe, digitelo nuevamente");
-					}
-				} while(!access);
-				do{
 					System.out.println("\nIngrese el nombre que le va a dar a su nueva playlist: ");
 					namePlaylist = lector.nextLine();
-					message = mainMCS.addPlaylist(namePlaylist);
+					message = mainMCS.addPlaylist(nameUser,namePlaylist);
 					System.out.println(message);
-				} while(message.equals("La playlist ya se encuentra registrada, intentelo nuevamente"));	
+				}while(message.equals("Ya existe una playlist con el nombre ingresado, intentelo nuevamente")|| message.equals("El usuario ingresado no existe, intentelo nuevamente"));	
 				break;
 			case 2:
-				do{
+				do{	
 					System.out.println("\nIngrese su nombre de usuario: ");
 					nameUser = lector.nextLine();
-					access = mainMCS.verifyUser(nameUser);
-					if(!access){
-						System.out.println("\nEl nombre de usuario ingresado no existe, digitelo nuevamente");
-					}
-				} while(!access);
-				do{
 					System.out.println("\nIngrese el nombre del usuario que va a tener acceso a esta playlist: ");
 					authorizedUser = lector.nextLine();
-					access = mainMCS.verifyUser(authorizedUser);
-					if(!access){
-						System.out.println("\nEl nombre de usuario ingresado no existe, digitelo nuevamente");
-					}
-				} while(!access);
-				do{
 					System.out.println("\nIngrese el nombre que le va a dar a su nueva playlist: ");
 					namePlaylist = lector.nextLine();
 					message = mainMCS.addPlaylist(namePlaylist, nameUser, authorizedUser);
-				}while(message.equals("La playlist ya se encuentra registrada, intentelo nuevamente"));
+					System.out.println(message);
+				}while(message.equals("Ya existe una playlist con el nombre ingresado, intentelo nuevamente")||message.equals("Su nombre de usuario es incorrecto o no se encuentra registrado aun, intentelo nuevamente")||message.equals("El usuario que digito para que tenga acceso a su playlist no existe, intentelo nuevamente"));
 				break;
 			case 3:
 				do{
 					System.out.println("\nIngrese su nombre de usuario: ");
-					nameUser = lector.nextLine();
-					access = mainMCS.verifyUser(nameUser);
-					if(!access){
-						System.out.println("\nEl nombre de usuario ingresado no existe, digitelo nuevamente");
-					}
-				} while(!access);				
-				nameUsersPlaylistR[0] = nameUser;
-				for(int k=0;k<RestrictedPL.MAX_NUM_USERS-1;k++){
-					do{
+					nameUsersPlaylistR[0] = lector.nextLine();				
+					for(int k=0;k<RestrictedPL.MAX_NUM_USERS-1;k++){
 						System.out.println("\nIngrese el nombre del usuario #"+(k+1)+" que va a tener acceso a esta playlist: ");
-						authorizedUser = lector.nextLine();
-						access = mainMCS.verifyUser(authorizedUser);
-						if(!access){
-							System.out.println("\nEl nombre de usuario ingresado no existe, digitelo nuevamente");
-						}
-					} while(!access);	
-					nameUsersPlaylistR[k] = authorizedUser; 
-				}
-				do{
+						nameUsersPlaylistR[k] = lector.nextLine();
+					}
 					System.out.println("\nIngrese el nombre que le va a dar a su nueva playlist: ");
 					namePlaylist = lector.nextLine();
 					message = mainMCS.addPlaylist(namePlaylist, nameUsersPlaylistR);
-				} while(message.equals("La playlist ya se encuentra registrada, intentelo nuevamente"));
+				} while(message.equals("Ya existe una playlist con el nombre ingresado, intentelo nuevamente")||message.equals("\nAlguno de los usuarios que digito para que tenga acceso a su playlist no existe, intentelo nuevamente"));
 				break;		
 		}
 	}
 
 	public void addSongToPlaylist(){
 		String nameUser, namePlaylist, nameSong, artistSong, message;
-		boolean access = true;
 		System.out.println(
 			"\n**********************************************************************************\n"+
 			"\n                        Agregar una cancion a una Playlist"+
@@ -349,12 +304,6 @@ public class Main{
 		do{
 			System.out.println("\nIngrese su nombre de usuario: ");
 			nameUser = lector.nextLine();
-			access = mainMCS.verifyUser(nameUser);
-			if(!access){
-				System.out.println("\nEl nombre de usuario ingresado no existe, digitelo nuevamente");
-			}
-		} while(!access);
-		do{
 			System.out.println("\nIngrese el nombre de la playlist a la que desea agregar una cancion: ");
 			namePlaylist = lector.nextLine();
 			System.out.println("\nIngrese el titulo de la cancion que desea agregar: ");
@@ -362,7 +311,8 @@ public class Main{
 			System.out.println("\nIngrese el artista al que pertenece la cancion que desea agregar: ");
 			artistSong = lector.nextLine();
 			message = mainMCS.addSongToPlaylist(nameUser, namePlaylist, nameSong, artistSong);
-		} while(message.equals("La playlist no se encuentra registrada, intentelo nuevamente") && message.equals("La cancion no se encuentra registrada en el Pool, intentelo nuevamente"));
+			System.out.println(message);
+		} while(message.equals("La cancion no se encuentra registrada en el Pool, intentelo nuevamente")||message.equals("El usuario ingresado no existe, intentelo nuevamente")||message.equals("La playlist no existe, intentelo nuevamente")||message.equals("La cancion no se pudo agregar, ya que el usuario ingresado no tiene el permiso de acceder a la Playlist"));
 	}
 
 	public void displayPlaylists(){
