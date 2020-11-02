@@ -23,19 +23,26 @@ public class RestrictedPL extends PlayList{
 		authorizedUsers = pAuthorizedUsers;
 	}
 
-	@Override
 	public String addSongToPlaylist(User objUser, Song objSong){
 		String message = "";
 		boolean find = false;
-		for(int k=0; k<authorizedUsers.length && !stop;k++){
-			if(objUser.getName().equalsIgnoreCase(authorizedUsers[k].getName())){
+		for(int k=0; k<authorizedUsers.length && !find;k++){
+			if(objUser.getUserName().equalsIgnoreCase(authorizedUsers[k].getUserName())){
 				message = super.addSongToPlaylist(objUser,objSong);
 				find = true;
 			} 
 		}
 		if(!find){
-			message = "La cancion no se pudo agregar, ya que el usuario ingresado no tiene el permiso de acceder a la Playlist";
-		}	
+			message = "\nLa cancion no se pudo agregar, ya que el usuario ingresado no tiene el permiso de acceder a la Playlist";
+		} return message;	
+	}
+
+	public String toString(){
+		String message = "";
+		for(int k=0;k<authorizedUsers.length;k++){
+			message+="\n                     **  Usuario #"+(k+1)+" con acceso: "+authorizedUsers[k].getUserName();
+		}
+		return super.toString()+"\n                     **  Tipo: Restringida"+message;	
 	}
 
 }

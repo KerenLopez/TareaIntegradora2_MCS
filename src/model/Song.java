@@ -6,8 +6,8 @@ public class Song{
 	private String title;
 	private String artistName;
 	private String releaseDate;
-	private int[] minutes;
-	private int[] seconds;
+	private int minutes;
+	private int seconds;
 	private Genre genre;	
 
 	//Getters and Setters of all the atributes or relationships
@@ -58,19 +58,19 @@ public class Song{
 		releaseDate = pReleaseDate;
 	}
 
-	public int[] getMinutes(){
+	public int getMinutes(){
 		return minutes;
 	}
 
-	public void setMinutes(int[] pMinutes){
+	public void setMinutes(int pMinutes){
 		minutes = pMinutes;
 	}
 
-	public int[] getSeconds(){
+	public int getSeconds(){
 		return seconds;
 	}
 
-	public void setSeconds(int[] pSeconds){
+	public void setSeconds(int pSeconds){
 		seconds = pSeconds;
 	}
 
@@ -92,11 +92,11 @@ public class Song{
 	* @param pTitle is a String variable that.
 	* @param pArtistName is a String variable that.
 	* @param pReleaseDate is a String variable that.
-	* @param pMinutes is a list of integers that.
-	* @param pSeconds is a list of integers that.
+	* @param pMinutes is an integer variable that.
+	* @param pSeconds is an integer variable that.
 	* @param pGenre is an integer variable that.
 	*/
-	public Song(String pTitle, String pArtistName, String pReleaseDate, int[] pMinutes, int[] pSeconds, int pGenre){
+	public Song(String pTitle, String pArtistName, String pReleaseDate, int pMinutes, int pSeconds, int pGenre){
 		title = pTitle;
 		artistName = pArtistName;
 		releaseDate = pReleaseDate;

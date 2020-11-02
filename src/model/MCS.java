@@ -81,7 +81,7 @@ public class MCS{
 				"\n                      **  Nombre: "+users[k].getUserName()+
 				"\n                      **  Edad: "+users[k].getAge()+
 				"\n                      **  Categoria: "+users[k].getUserCategory()+
-				"\n                      *************************************\n"; 
+				"\n                     *************************************\n"; 
 			}
 		} return message;
 	}
@@ -114,15 +114,15 @@ public class MCS{
  	* @param title is a String variable.
  	* @param artist is a String variable.
  	* @param date is a String variable.
- 	* @param minutes is a list of integers that .
- 	* @param seconds is a list of integers that .
+ 	* @param minutes is an integer variable that .
+ 	* @param seconds is an integer variable that .
  	* @param genre is an integer variable .
  	* @return a <code> String </code> variable that .
 	*/
-	public String addSongsToPool(String nameUser, String title, String artist, String date, int[] minutes, int[] seconds, int genre){
+	public String addSongsToPool(String nameUser, String title, String artist, String date, int minutes, int seconds, int genre){
 		Song objSong = findSongInPool(title, artist);
 		User objUser = findUser(nameUser);
-		String message = "\nLa cancion ha sido agregada exitosamente al pool de canciones";
+		String message = "";
 		boolean stop = true;
 		if(objSong==null && objUser!=null){
 			for(int k=0;k<songsPool.length && stop;k++){
@@ -130,14 +130,15 @@ public class MCS{
 					stop = false;
 					songsPool[k]= new Song(title,artist,date,minutes,seconds,genre);
 					objUser.changeUserCategory();
+					message = "\nLa cancion ha sido agregada exitosamente al pool de canciones";
 				}
 			}	
 		} else{
 			if (objUser==null){
-				message = "\nEl usuario ingresado no existe, intentelo nuevamente";
+				message += "\nEl usuario ingresado no existe, intentelo nuevamente";
 			} 
 			if(objSong!=null){
-				message = "\nLa cancion ya se encuentra registrada, intentelo nuevamente";
+				message += "\nLa cancion ya se encuentra registrada, intentelo nuevamente";
 			}
 		}
 		return message;
@@ -155,8 +156,9 @@ public class MCS{
 				message +="\n                     ************* Cancion **************"+
 				"\n                     **  Titulo: "+songsPool[k].getTitle()+
 				"\n                     **  Artista o banda: "+songsPool[k].getArtistName()+
-				"\n                     **  Duracion: "+songsPool[k].getMinutes()[k]+":"+songsPool[k].getSeconds()[k]+
-				"\n                     **  Genero: "+songsPool[k].getGenre()+"\n***********************************"; 
+				"\n                     **  Duracion: "+songsPool[k].getMinutes()+":"+songsPool[k].getSeconds()+
+				"\n                     **  Genero: "+songsPool[k].getGenre()+
+				"\n                     ************************************"; 
 			}
 		} return message;
 	}
@@ -188,14 +190,14 @@ public class MCS{
  	* @param nameUser is a String variable.  
  	* @return a <code> String </code> variable that .
 	*/
-	public String addPlaylist(String namePlaylist, String nameUser){
+	public String addPlaylist(String namePlaylist, String nameUser, int option){
 		User objUser = findUser(nameUser); 
 		PlayList objPlaylist = findPlaylist(namePlaylist);
-		String message = "\nLa playlist fue creada exitosamente";
+		String message = "";
 		boolean stop = false;
 		int[] minutes = new int[MAX_NUM_SONGS];
 		int[] seconds = new int[MAX_NUM_SONGS];
-		for(int i = 0;i<MAX_NUM_SONGS;i++) {
+		for(int i = 0;i<minutes.length && i<seconds.length;i++) {
 			minutes[i]= 0;
 			seconds[i]= 0;
 		}
@@ -203,60 +205,24 @@ public class MCS{
 			for(int k=0;k<playlists.length && !stop;k++){
 				if(playlists[k]==null){
 					stop = true;
-					playlists[k]= new PublicPL(namePlaylist, minutes, seconds);	
+					if(option==1){
+						playlists[k]= new PublicPL(namePlaylist, minutes, seconds);
+						message = "\nLa playlist fue creada exitosamente";
+					}
+					if(option==2){
+						playlists[k]= new PrivatePL(namePlaylist, minutes, seconds, objUser);
+						message = "\nLa playlist fue creada exitosamente";
+					}	
 				}
 			}
 		} else{
 			if(objPlaylist!=null) {
-				message = "\nYa existe una playlist con el nombre ingresado, intentelo nuevamente";
+				message += "\nYa existe una playlist con el nombre ingresado, intentelo nuevamente";
 			}
 			if (objUser==null){
-				message = "\nEl usuario ingresado no existe, intentelo nuevamente";
+				message += "\nEl usuario ingresado no existe, intentelo nuevamente";
 			} 
 		} 
-		return message;
-	}
-	/**
-	* This method  . <br>
-	* <b>name</b>: addPlaylist.<br>
-	* <b>pre</b>: the variables namePlaylist, nameUser and authorizedUser are already inicializated. <br>
- 	* <b>post</b>: the . <br>
- 	* @param namePlaylist is a String variable.
- 	* @param nameUser is a String variable.  
- 	* @param authorizedUser is a String variable. 
- 	* @return a <code> String </code> variable that .
-	*/
-	public String addPlaylist(String namePlaylist, String nameUser, String authorizedUser){
-		User objUserN1 = findUser(nameUser);
-		User objUserN2 = findUser(authorizedUser);  
-		User objAuthorizedUser = findUser(authorizedUser); 
-		PlayList objPlaylist = findPlaylist(namePlaylist);
-		String message = "\nLa playlist fue agregada exitosamente";
-		boolean stop = false;
-		int[] minutes = new int[MAX_NUM_SONGS];
-		int[] seconds = new int[MAX_NUM_SONGS];
-		for(int i = 0;i<MAX_NUM_SONGS;i++) {
-			minutes[i]= 0;
-			seconds[i]= 0;
-		}
-		if(objPlaylist==null && objUserN1!=null && objUserN2!=null){
-			for(int k=0;k<playlists.length && !stop;k++){
-				if(playlists[k]==null){
-					stop = true;
-					playlists[k]= new PrivatePL(namePlaylist, minutes, seconds, objUser, objAuthorizedUser);	
-				}
-			}
-		} else{
-			if(objPlaylist!=null) {
-				message = "\nYa existe una playlist con el nombre ingresado, intentelo nuevamente";
-			}
-			if (objUserN1!=null){
-				message = "\nSu nombre de usuario es incorrecto o no se encuentra registrado aun, intentelo nuevamente";
-			}
-			if(objUserN2!=null){
-				message = "\nEl usuario que digito para que tenga acceso a su playlist no existe, intentelo nuevamente";
-			}
-		}
 		return message;
 	}
 	/**
@@ -273,10 +239,10 @@ public class MCS{
 		boolean stop = false;
 		User[] objAuthorizedUsers = new User[RestrictedPL.MAX_NUM_USERS]; 
 		PlayList objPlaylist = findPlaylist(namePlaylist);
-		String message = "\nLa playlist fue agregada exitosamente";
+		String message = "";
 		int[] minutes = new int[MAX_NUM_SONGS];
 		int[] seconds = new int[MAX_NUM_SONGS];
-		for(int i = 0;i<MAX_NUM_SONGS;i++) {
+		for(int i = 0;i<minutes.length && i<seconds.length;i++) {
 			minutes[i]= 0;
 			seconds[i]= 0;
 		}
@@ -286,19 +252,20 @@ public class MCS{
 				numRegisteredUsers+=1;
 			}
 		}
-		if(objPlaylist==null && numUsersExists==RestrictedPL.MAX_NUM_USERS){
+		if(objPlaylist==null && numRegisteredUsers==RestrictedPL.MAX_NUM_USERS){
 			for(int k=0;k<playlists.length && !stop;k++){
 				if(playlists[k]==null){
 					stop = true;
-					playlists[k]= new RestrictedPL(namePlaylist, minutes, seconds, objAuthorizedUsers);	
+					playlists[k]= new RestrictedPL(namePlaylist, minutes, seconds, objAuthorizedUsers);
+					message = "\nLa playlist fue creada exitosamente";	
 				}
 			}
 		} else{
 			if(objPlaylist!=null) {
-				message = "\nYa existe una playlist con el nombre ingresado, intentelo nuevamente";
+				message += "\nYa existe una playlist con el nombre ingresado, pruebe con uno distinto";
 			}
 			if(numRegisteredUsers<RestrictedPL.MAX_NUM_USERS){
-				message = "\nAlguno de los usuarios que digito para que tenga acceso a su playlist no existe, intentelo nuevamente";
+				message += "\nAlguno de los usuarios que digito no existe, intentelo nuevamente";
 			}
 		} return message;
 	}
@@ -322,15 +289,29 @@ public class MCS{
 			message = objPlaylist.addSongToPlaylist(objUser, objSong);
 		} else{
 			if(objSong==null){
-				message = "La cancion no se encuentra registrada en el Pool, intentelo nuevamente";
+				message += "\nLa cancion no se encuentra registrada en el Pool, intentelo nuevamente";
 			}
 			if(objUser==null){
-				message = "El usuario ingresado no existe, intentelo nuevamente";
+				message += "\nEl usuario ingresado no existe, intentelo nuevamente";
 			}
 			if(objPlaylist==null){
-				message = "La playlist no existe, intentelo nuevamente";
+				message += "\nLa playlist no existe, intentelo nuevamente";
 			}	
 		} return message;
+	}
+
+	public String showPlaylists(){
+		String message = "";
+		for(int k=0;k<playlists.length;k++){
+			if(playlists[k]!=null){
+				message += playlists[k].toString();
+			}
+		} return message;
+	}
+
+	public String ratePublicPlaylists(String nameUser, String namePlaylist, int grade){
+		String message =  "";
+		return message;
 	}
 
 	//Getters and Setters

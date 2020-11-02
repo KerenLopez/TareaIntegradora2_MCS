@@ -3,7 +3,6 @@ package model;
 public class PrivatePL extends PlayList{
 
 	//Relationships
-	private User nameUser;
 	private User authorizedUser;
 
 	/**
@@ -14,22 +13,23 @@ public class PrivatePL extends PlayList{
 	* @param name is a String variable that.
 	* @param minutes is a list of integers that.
 	* @param seconds is a list of integers that.
-	* @param pNameUser is an User object that.
 	* @param pAuthorizedUser is an User object that.
 	*/
-	public PrivatePL(String name, int[] minutes, int[] seconds, User pNameUser, User pAuthorizedUser){
+	public PrivatePL(String name, int[] minutes, int[] seconds, User pAuthorizedUser){
 		super(name,minutes,seconds);
-		nameUser = pNameUser;
 		authorizedUser = pAuthorizedUser;
 	}
 
-	@Override
 	public String addSongToPlaylist(User objUser, Song objSong){
 		String message = "";
-		if(objUser.getName().equalsIgnoreCase(nameUser.getName())||objUser.getName().equalsIgnoreCase(authorizedUser.getName())){
+		if(objUser.getUserName().equalsIgnoreCase(authorizedUser.getUserName())){
 			message = super.addSongToPlaylist(objUser,objSong); 
 		} else{
-			message = "La cancion no se pudo agregar, ya que el usuario ingresado no tiene el permiso de acceder a la Playlist";
-		}
+			message = "\nLa cancion no se pudo agregar, ya que el usuario ingresado no tiene el permiso de acceder a la Playlist";
+		} return message;
+	}
+
+	public String toString(){
+		return super.toString()+"\n                     **  Tipo: Privada"+"\n                     **  Usuario con acceso: "+authorizedUser.getUserName();
 	}	
 }

@@ -108,49 +108,84 @@ public class PlayList{
 		minutes = pMinutes;
 		seconds = pSeconds; 
 		genres = new Genre[NUM_GENRES];
+		genres[0] = Genre.UNKNOWN;
 		songs = new Song[MCS.MAX_NUM_SONGS];
+	}
+
+	public Song findSongInPlaylist(Song objSong){
+		Song objFindSong = null;
+		boolean find = false;
+		for(int k=0;k<songs.length && !find;k++){
+			if(songs[k]!=null && songs[k].getTitle().equalsIgnoreCase(objSong.getTitle())){
+				find=true;
+				objFindSong = songs[k];
+			}
+		}
+		return objFindSong;
 	}
 
 	public String addSongToPlaylist(User objUser, Song objSong){
 		String message = "";
-		boolean stop = true, find = false;
-		for(int k=0; k<songs.length && stop;k++){
-			if(songs[k]==null){
-				songs[k]= objSong;
-				message = "La cancion ha sido agregada exitosamente";
-				stop = false;
-			}
-		}
-		for(int j=0; j<minutes.length && j<seconds.length;j++){
-			if(minutes[j]==null){
-				minutes[j]= objSong.getMinutes();
-			}
-			if(seconds[j]==null){
-				seconds[j]=objSong.getSeconds();	
-			}
-		}
-		for(int i=0;i<genres.length;k++){
-			if(genres[i]==objSong.getGenre()){
-				find = true;
-			}
-		}
-		if(!find){
-			for(int x=0;x<genres && stop;k++){
-				if(genres[x]==null){
-					genres[x]=objSong.getGenre();
+		Song newObjSong = findSongInPlaylist(objSong);
+		boolean stop = true, find = false, exit = true;
+		if(newObjSong==null){	
+			for(int k=0; k<songs.length && stop;k++){
+				if(songs[k]==null){
+					songs[k]= objSong;
+					minutes[k]= objSong.getMinutes();
+					seconds[k]= objSong.getSeconds();
+					message = "\nLa cancion ha sido agregada exitosamente a la playlist";
+					for(int i=0;i<genres.length && !find;i++){
+						if(genres[i]!=null && genres[i]==objSong.getGenre()){
+							find = true;
+						}
+					}
+					if(!find){
+						for(int x=0;x<genres.length && exit;x++){
+							if(genres[x]==Genre.UNKNOWN){
+								genres[x]= objSong.getGenre();
+								exit = false;
+							}else if(genres[x]==null){
+								genres[x]=objSong.getGenre();
+								exit = false;
+							}	
+						}
+					} 
 					stop = false;
-				}	
+				}
 			}
-		}
+		} else{
+			message = "\nLa cancion ya se encuentra registrada en la playlist, pruebe con otra";
+		} return message;
 	}
 
 	public String calculateDuration(){
 		String message = "";
-		int sumMinutes = 0, sumSeconds = 0, numMinutes = 0, numSeconds = 0, numHours = 0, residue = 0;
-		for(k=0;k<seconds.length && k<minutes.length;k++){
+		int sumMinutes = 0, sumSeconds = 0, sumHours = 0, residue = 0;
+		for(int k=0;k<seconds.length && k<minutes.length;k++){
 			sumSeconds += seconds[k];
 			sumMinutes += minutes[k];
 		}
+		sumMinutes+= sumSeconds/60;
+		sumHours += sumMinutes/60;
+		sumMinutes = sumMinutes%60;
+		sumSeconds = sumSeconds%60;
+		message = sumHours+":"+sumMinutes+":"+sumSeconds;
+		return message;
+	}
+
+	public String toString(){
+		String message = "";
+		for(int k=0;k<genres.length;k++){
+			if(genres[k]!=null){
+				message+=getGenres()[k]+" ";
+			}	
+		}
+		return  "\n                     *************************************"+
+				"\n                     ************* PlayList **************"+
+				"\n                     **  Titulo: "+name+
+				"\n                     **  Duracion: "+calculateDuration()+
+				"\n                     **  Genero: "+message;
 	}
 }
 
