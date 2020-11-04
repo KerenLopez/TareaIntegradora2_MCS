@@ -19,43 +19,43 @@ public class Main{
 	public static void main(String[] args){
 
 		System.out.println(
-			"\n**********************************************************************************************************************************\n"+   
-			"                                           Bienvenido a la aplicacion Music Collect & Share"+
-			"\n**********************************************************************************************************************************\n"+   
-			"                                          (((((((((((((((((((((((((((((((((((((((((((((((((\n"+
-			"                                          ((((((((((((((((/((((((((((((((((((((((((((((((((\n"+
-			"                                          (((/  .(((((((*  .((((((*        (((((/      /(((\n"+
-			"                                          (((/   .((((((.  .(((((   ,((((((((((*  .((((((((\n"+
-			"                                          (((/    /((((/   .((((/  ,(((((((((((.  /((((((((\n"+
-			"                                          (((/     ((((*   .((((*  ,(((((((((((/   ((((((((\n"+
-			"                                          (((/  *  *(((     ((((*  ,((((((((((((,  .(((((((\n"+
-			"                                          (((/  /.  ((*     ((((*  *(((((((((((((,   ((((((\n"+
-			"                                          (((/  //  ,(  .   ((((*  *((((((((((((((/   /((((\n"+
-			"                                          (((/  *(*  ,  (   ((((*  *((((((((((((((((   /(((\n"+
-			"                                          (((/  ,(/    ,(   /(((*  ,(((((((((((((((((   (((\n"+
-			"                                          (((/  .((    ((   /((((  .(((((((((((((((((.  /((\n"+
-			"                                          (((/  .((.  .((.  *((((,  *((((((((((((((((   /((\n"+
-			"                                          (((/  .((((((((.  *(((((   *((((/,/(((((((/   (((\n"+
-			"                                          (((/  .((((((((.  *((((((.        *((   .   .((((\n"+
-			"                                          (((((((((((((((/*/((((((((((///(((((((////(((((((\n"+
-			"                                          (((((((((((((((((((((((((((((((((((((((((((((((((\n"+
-            "                                                          ./(###((///((###(*\n"+                
-			"                                                      *#(,                   *((,\n"+           
-			"                                                   ,#/                           ((\n"+         
-			"                                                 .#*          .**/////*,.          ((\n"+       
-			"                                                *(.      .//////////////////*       *#\n"+      
-			"                                               .#,     *///////////////////////,     /(\n"+     
-			"                                               /(    *///////////////////////////    .#.\n"+    
-			"                                             ,/////,*/////////////////////////////,*////*.\n"+  
-			"                                             /////////////////////////*,...,/////////////,\n"+  
-			"                                             //////*,,,********,,.............,,,,,//////,\n"+  
-			"                                             //////*.........//*........//*.......,//////,\n"+  
-			"                                             //////*.........,,.........,,........,//////,\n"+  
-			"                                             //////*..............................,//////,\n"+  
-			"                                              *///*  ........,/.........**.......  .*///,\n"+   
-			"                                                      .......,/*.....,/*.......\n"+            
-			"                                                         ........,,,,.......\n"+               
-			"                                                               .........\n"                    
+			"\n************************************************************************************************************************\n"+   
+			"                                      Bienvenido a la aplicacion Music Collect & Share"+
+			"\n************************************************************************************************************************\n"+   
+			"                                     (((((((((((((((((((((((((((((((((((((((((((((((((\n"+
+			"                                     ((((((((((((((((/((((((((((((((((((((((((((((((((\n"+
+			"                                     (((/  .(((((((*  .((((((*        (((((/      /(((\n"+
+			"                                     (((/   .((((((.  .(((((   ,((((((((((*  .((((((((\n"+
+			"                                     (((/    /((((/   .((((/  ,(((((((((((.  /((((((((\n"+
+			"                                     (((/     ((((*   .((((*  ,(((((((((((/   ((((((((\n"+
+			"                                     (((/  *  *(((     ((((*  ,((((((((((((,  .(((((((\n"+
+			"                                     (((/  /.  ((*     ((((*  *(((((((((((((,   ((((((\n"+
+			"                                     (((/  //  ,(  .   ((((*  *((((((((((((((/   /((((\n"+
+			"                                     (((/  *(*  ,  (   ((((*  *((((((((((((((((   /(((\n"+
+			"                                     (((/  ,(/    ,(   /(((*  ,(((((((((((((((((   (((\n"+
+			"                                     (((/  .((    ((   /((((  .(((((((((((((((((.  /((\n"+
+			"                                     (((/  .((.  .((.  *((((,  *((((((((((((((((   /((\n"+
+			"                                     (((/  .((((((((.  *(((((   *((((/,/(((((((/   (((\n"+
+			"                                     (((/  .((((((((.  *((((((.        *((   .   .((((\n"+
+			"                                     (((((((((((((((/*/((((((((((///(((((((////(((((((\n"+
+			"                                     (((((((((((((((((((((((((((((((((((((((((((((((((\n"+
+            "                                                     ./(###((///((###(*\n"+                
+			"                                                 *#(,                   *((,\n"+           
+			"                                              ,#/                           ((\n"+         
+			"                                            .#*          .**/////*,.          ((\n"+       
+			"                                           *(.      .//////////////////*       *#\n"+      
+			"                                          .#,     *///////////////////////,     /(\n"+     
+			"                                          /(    *///////////////////////////    .#.\n"+    
+			"                                        ,/////,*/////////////////////////////,*////*.\n"+  
+			"                                        /////////////////////////*,...,/////////////,\n"+  
+			"                                        //////*,,,********,,.............,,,,,//////,\n"+  
+			"                                        //////*.........//*........//*.......,//////,\n"+  
+			"                                        //////*.........,,.........,,........,//////,\n"+  
+			"                                        //////*..............................,//////,\n"+  
+			"                                         *///*  ........,/.........**.......  .*///,\n"+   
+			"                                                  .......,/*.....,/*.......\n"+            
+			"                                                     ........,,,,.......\n"+               
+			"                                                           .........\n"                    
 		);
 		Main objMain = new Main();
 		int option = 0;
@@ -69,9 +69,9 @@ public class Main{
 		boolean menu = true;
 		while(menu){
 			System.out.println(
-				"\n**********************************************************************************************************************************\n"+
-				"                                                  Seleccione una opcion para continuar"+
-				"\n**********************************************************************************************************************************\n"+
+				"\n************************************************************************************************************************\n"+
+				"                                               Seleccione una opcion para continuar"+
+				"\n************************************************************************************************************************\n"+
 				"      1. Registrar un nuevo usuario\n"+
 				"      2. Conocer la lista de usuarios registrados\n"+
 				"      3. Agregar una cancion al Pool de canciones\n"+
@@ -88,7 +88,7 @@ public class Main{
 					if(mainMCS.getUsers()[(MCS.MAX_NUM_USERS)-1]==null){
 						addUser();
 					} else {
-						System.out.println("\n**********************************************************************************************************************************"+"\nYa se han registrado la maxima cantidad de usuarios posibles, no puede agregar otra");
+						System.out.println("\n************************************************************************************************************************"+"\nYa se han registrado la maxima cantidad de usuarios posibles, no puede agregar otro");
 					}	
 					menu = false;
 					break;
@@ -100,7 +100,7 @@ public class Main{
 					if(mainMCS.getSongsPool()[(MCS.MAX_NUM_SONGS)-1]==null){
 						addSongToPool();
 					} else{
-						System.out.println("\n**********************************************************************************************************************************"+"\nYa ha ingresado la maxima cantidad de canciones posibles, no puede agregar otra");
+						System.out.println("\n************************************************************************************************************************"+"\nYa ha ingresado la maxima cantidad de canciones posibles, no puede agregar otra");
 					}
 					menu = false;
 					break;	
@@ -112,7 +112,7 @@ public class Main{
 					if(mainMCS.getPlaylists()[(MCS.MAX_NUM_PLAYLISTS)-1]==null){
 						createPlaylist();
 					} else{
-						System.out.println("\nYa ha creado la maxima cantidad de playlists posibles, no puede agregar otra");
+						System.out.println("\n************************************************************************************************************************"+"\nYa ha creado la maxima cantidad de playlists posibles, no puede agregar otra");
 					}
 					menu = false;
 					break;	
@@ -129,11 +129,11 @@ public class Main{
 					menu = false;
 					break;
 				case 9:	
-					System.out.println("\n**********************************************************************************************************************************\n"+"Gracias por utilizar nuestra aplicacion"+"\n**********************************************************************************************************************************\n");
+					System.out.println("\n************************************************************************************************************************\n"+"Gracias por utilizar nuestra aplicacion"+"\n************************************************************************************************************************\n");
 					menu = false;
 					break;				
 				default:
-					System.out.println("\n**********************************************************************************************************************************\n"+"Error, opcion no valida");
+					System.out.println("\n************************************************************************************************************************\n"+"Error, opcion no valida");
 					menu = false;
 					break;	    	
 			} 	
@@ -145,9 +145,9 @@ public class Main{
 		int age;
 		boolean correct;
 		System.out.println(
-			"\n**********************************************************************************************************************************\n"+
+			"\n************************************************************************************************************************\n"+
 			"                                                         Crear un usuario"+
-			"\n**********************************************************************************************************************************"
+			"\n************************************************************************************************************************"
 		);
 		do{
 			do{
@@ -175,9 +175,9 @@ public class Main{
 	public void displayUsers(){
 		String message = mainMCS.showUsers();
 		System.out.println(
-			"\n**********************************************************************************************************************************\n"+
-			"\n                                               Lista de usuarios registrados"+
-			"\n**********************************************************************************************************************************\n"
+			"\n************************************************************************************************************************\n"+
+			"                                                 Lista de usuarios registrados"+
+			"\n************************************************************************************************************************\n"
 		);
 		System.out.println(message);
 	}
@@ -187,9 +187,9 @@ public class Main{
 		int minutes, seconds, genre = 0;
 		do{ 
 			System.out.println(
-			"\n**********************************************************************************************************************************\n"+
-			"                                             Agregar una cancion al Pool de canciones"+
-			"\n**********************************************************************************************************************************"
+			"\n************************************************************************************************************************\n"+
+			"                                            Agregar una cancion al Pool de canciones"+
+			"\n************************************************************************************************************************"
 		    );
 			System.out.println("\nIngrese su nombre de usuario: ");
 			nameUser = lector.nextLine();
@@ -226,9 +226,9 @@ public class Main{
 	public void displayPoolSongs(){
 		String message = mainMCS.showSongsInPool();
 		System.out.println(
-			"\n**********************************************************************************************************************************\n"+
-			"                                        Lista de canciones compartidas en el Pool de canciones"+
-			"\n**********************************************************************************************************************************"+
+			"\n***********************************************************************************************************************\n"+
+			"                                    Lista de canciones compartidas en el Pool de canciones"+
+			"\n***********************************************************************************************************************"+
 			message
 		);
 	}
@@ -240,10 +240,10 @@ public class Main{
 		do{
 			do{
 				System.out.println(
-					"\n**********************************************************************************************************************************\n"+
+					"\n***********************************************************************************************************************\n"+
 					"                                                        Crear una Playlist"+
-					"\n**********************************************************************************************************************************\n"+
-					"Seleccione el tipo de playlist que desea crear: "+
+					"\n***********************************************************************************************************************"+
+					"\nSeleccione el tipo de playlist que desea crear: "+
 					"\n    1. Publica"+
 					"\n    2. Privada"+
 					"\n    3. Restringida"
@@ -257,11 +257,11 @@ public class Main{
 				System.out.println("\nIngrese su nombre de usuario: ");
 				nameUser = lector.nextLine();
 				System.out.println("\nIngrese el nombre que le va a dar a su nueva playlist: ");
-				namePlaylist = lector.nextLine();
-				if(option==2){
-					System.out.println("\nRecuerde que usted sera el unico que tendra acceso a esta playlist");
-				}	
+				namePlaylist = lector.nextLine();	
 				message = mainMCS.addPlaylist(namePlaylist,nameUser,option);
+				if(option==2 && message.equals("\nLa playlist fue creada exitosamente")){
+					System.out.println("\nRecuerde que usted sera el unico que tendra acceso a esta playlist");
+				}
 				System.out.println(message);	
 			} else{	
 				System.out.println("\nIngrese su nombre de usuario: ");
@@ -273,7 +273,9 @@ public class Main{
 				System.out.println("\nIngrese el nombre que le va a dar a su nueva playlist: ");
 				namePlaylist = lector.nextLine();
 				message = mainMCS.addPlaylist(namePlaylist,nameUsersPlaylistR);
-				System.out.println("\nRecuerde que usted y las personas que ingreso seran las unicas con acceso a esta playlist");
+				if(message.equals("\nLa playlist fue creada exitosamente")){
+					System.out.println("\nRecuerde que usted y las personas que ingreso seran las unicas con acceso a esta playlist");
+				}
 				System.out.println(message);
 			}	
 		} while(!message.equals("\nLa playlist fue creada exitosamente"));	
@@ -281,23 +283,21 @@ public class Main{
 
 	public void addSongToPlaylist(){
 		String nameUser, namePlaylist, nameSong, artistSong, message;
-		do{
-			System.out.println(
-				"\n************************************************************************************************************************\n"+
-				"                                             Agregar una cancion a una Playlist"+
-				"\n************************************************************************************************************************"
-			);
-			System.out.println("\nIngrese su nombre de usuario: ");
-			nameUser = lector.nextLine();
-			System.out.println("\nIngrese el nombre de la playlist a la que desea agregar una cancion: ");
-			namePlaylist = lector.nextLine();
-			System.out.println("\nIngrese el titulo de la cancion que desea agregar: ");
-			nameSong = lector.nextLine();
-			System.out.println("\nIngrese el artista al que pertenece la cancion que desea agregar: ");
-			artistSong = lector.nextLine();
-			message = mainMCS.addSongToPlaylist(nameUser, namePlaylist, nameSong, artistSong);
-			System.out.println(message);
-		} while(!message.equals("\nLa cancion ha sido agregada exitosamente a la playlist"));
+		System.out.println(
+			"\n***********************************************************************************************************************\n"+
+			"                                             Agregar una cancion a una Playlist"+
+			"\n***********************************************************************************************************************"
+		);
+		System.out.println("\nIngrese su nombre de usuario: ");
+		nameUser = lector.nextLine();
+		System.out.println("\nIngrese el nombre de la playlist a la que desea agregar una cancion: ");
+		namePlaylist = lector.nextLine();
+		System.out.println("\nIngrese el titulo de la cancion que desea agregar: ");
+		nameSong = lector.nextLine();
+		System.out.println("\nIngrese el artista al que pertenece la cancion que desea agregar: ");
+		artistSong = lector.nextLine();
+		message = mainMCS.addSongToPlaylist(nameUser, namePlaylist, nameSong, artistSong);
+		System.out.println(message);
 	}
 
 	public void displayPlaylists(){
@@ -313,27 +313,24 @@ public class Main{
 	public void ratePlaylist(){
 		String nameUser, namePlaylist, message;
 		int grade;
+		System.out.println(
+			"\n************************************************************************************************************************\n"+
+			"                                                Calificar una playlist publica"+
+			"\n************************************************************************************************************************"
+		);
+		System.out.println("\nIngrese su nombre de usuario: ");
+		nameUser = lector.nextLine();
+		System.out.println("\nIngrese el nombre de la playlist publica a la que desea calificar: ");
+		namePlaylist = lector.nextLine();
 		do{
-			System.out.println(
-				"\n************************************************************************************************************************\n"+
-				"                                                Calificar una playlist publica"+
-				"\n************************************************************************************************************************"
-			);
-			System.out.println("\nIngrese su nombre de usuario: ");
-			nameUser = lector.nextLine();
-			System.out.println("\nIngrese el nombre de la playlist publica a la que desea calificar: ");
-			namePlaylist = lector.nextLine();
-			do{
-				System.out.println("\nElija un numero entre 1 y 5 para calificar la playlist (Recuerde que 1 es la nota más baja y 5 la nota más alta): ");
-				grade = lector.nextInt(); lector.nextLine();
-				if(grade!=1 && grade!=2 && grade!=3 && grade!=4 && grade!=5){
-					System.out.println("Ingrese una opcion correcta");
-				}
-			}while(grade!=1 && grade!=2 && grade!=3 && grade!=4 && grade!=5);
-			message = mainMCS.ratePublicPlaylists(nameUser, namePlaylist, grade);
-			System.out.println(message);
-		} while(!message.equals("La calificacion de la playlist ha sido agregada correctamente"));
-
+			System.out.println("\nElija un numero entre 1 y 5 para calificar la playlist (Recuerde que 1 es la nota mas baja y 5 la nota mas alta): ");
+			grade = lector.nextInt(); lector.nextLine();
+			if(grade!=1 && grade!=2 && grade!=3 && grade!=4 && grade!=5){
+				System.out.println("\nIngrese una opcion correcta");
+			}
+		}while(grade!=1 && grade!=2 && grade!=3 && grade!=4 && grade!=5);
+		message = mainMCS.ratePublicPlaylists(nameUser, namePlaylist, grade);
+		System.out.println(message);
 	}
 
 }

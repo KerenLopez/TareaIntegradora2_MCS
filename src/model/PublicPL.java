@@ -2,6 +2,28 @@ package model;
 
 public class PublicPL extends PlayList{
 
+	//Atributes
+	private int numGrades;
+	private int grades;
+	private double averageGrade;
+
+	//Getters and Setters of all the atributes	
+	public int getNumGrades(){
+		return numGrades;
+	}
+
+	public void setNumGrades(int pNumGrades){
+		numGrades = pNumGrades;
+	} 
+
+	public double getAverageGrade(){
+		return averageGrade;
+	}
+
+	public void setAverageGrade(double pAverageGrade){
+		averageGrade = pAverageGrade;
+	}
+
 	//Methods 
 
 	/**
@@ -15,9 +37,20 @@ public class PublicPL extends PlayList{
 	*/
 	public PublicPL(String name, int[] minutes, int[] seconds){
 		super(name,minutes,seconds);
+		grades = 0;
+		numGrades = 0;
+		averageGrade = 0;
+	}
+
+	public String ratePlaylist(int grade){
+		String message = "\nLa calificacion de la playlist ha sido agregada correctamente";
+		numGrades+=1;
+		grades += grade;
+		averageGrade = grades/numGrades; 
+		return message;
 	}
 
 	public String toString(){
-		return super.toString()+"\n                     **  Tipo: Publica";
+		return super.toString()+"\n                                          **  Tipo: Publica"+"\n                                          **  Nota promedio: "+getAverageGrade();
 	}
 }

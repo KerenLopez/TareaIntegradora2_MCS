@@ -77,11 +77,11 @@ public class MCS{
 		String message="";
 		for(int k=0;k<users.length;k++){
 			if(users[k]!=null){
-				message +="\n                     *************  Usuario **************"+
-				"\n                      **  Nombre: "+users[k].getUserName()+
-				"\n                      **  Edad: "+users[k].getAge()+
-				"\n                      **  Categoria: "+users[k].getUserCategory()+
-				"\n                     *************************************\n"; 
+				message +="\n                                          *************  Usuario **************"+
+				"\n                                            **  Nombre: "+users[k].getUserName()+
+				"\n                                            **  Edad: "+users[k].getAge()+
+				"\n                                            **  Categoria: "+users[k].getUserCategory()+
+				"\n                                          *************************************\n"; 
 			}
 		} return message;
 	}
@@ -153,12 +153,12 @@ public class MCS{
 		String message = "";
 		for(int k=0;k<songsPool.length;k++){
 			if(songsPool[k]!=null){
-				message +="\n                     ************* Cancion **************"+
-				"\n                     **  Titulo: "+songsPool[k].getTitle()+
-				"\n                     **  Artista o banda: "+songsPool[k].getArtistName()+
-				"\n                     **  Duracion: "+songsPool[k].getMinutes()+":"+songsPool[k].getSeconds()+
-				"\n                     **  Genero: "+songsPool[k].getGenre()+
-				"\n                     ************************************"; 
+				message +="\n                                          ************* Cancion **************"+
+				"\n                                          **  Titulo: "+songsPool[k].getTitle()+
+				"\n                                          **  Artista o banda: "+songsPool[k].getArtistName()+
+				"\n                                          **  Duracion: "+songsPool[k].getMinutes()+":"+songsPool[k].getSeconds()+
+				"\n                                          **  Genero: "+songsPool[k].getGenre()+
+				"\n                                          ************************************"; 
 			}
 		} return message;
 	}
@@ -311,7 +311,22 @@ public class MCS{
 
 	public String ratePublicPlaylists(String nameUser, String namePlaylist, int grade){
 		String message =  "";
-		return message;
+		User objUser = findUser(nameUser);
+		PlayList objPlaylist = findPlaylist(namePlaylist);
+		if(objPlaylist!=null && objUser!=null){
+			if(objPlaylist instanceof PublicPL){
+				message = ((PublicPL)objPlaylist).ratePlaylist(grade);
+			} else{
+				message += "\nLa playlist no es de tipo publica, intentelo nuevamente";
+			}
+		} else{
+			if(objUser==null){
+				message += "\nEl usuario ingresado no se encuentra registrado, intentelo nuevamente";
+			}
+			if(objPlaylist==null){
+				message += "\nLa playlist no existe, intentelo nuevamente";
+			}	
+		} return message;
 	}
 
 	//Getters and Setters

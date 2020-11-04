@@ -23,6 +23,7 @@ public class RestrictedPL extends PlayList{
 		authorizedUsers = pAuthorizedUsers;
 	}
 
+
 	public String addSongToPlaylist(User objUser, Song objSong){
 		String message = "";
 		boolean find = false;
@@ -40,9 +41,9 @@ public class RestrictedPL extends PlayList{
 	public String toString(){
 		String message = "";
 		for(int k=0;k<authorizedUsers.length;k++){
-			message+="\n                     **  Usuario #"+(k+1)+" con acceso: "+authorizedUsers[k].getUserName();
+			message+="\n                                          **  Usuario #"+(k+1)+" con acceso: "+authorizedUsers[k].getUserName();
 		}
-		return super.toString()+"\n                     **  Tipo: Restringida"+message;	
+		return super.toString()+"\n                                          **  Tipo: Restringida"+message;	
 	}
 
 }

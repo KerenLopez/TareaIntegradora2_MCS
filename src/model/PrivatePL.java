@@ -20,6 +20,7 @@ public class PrivatePL extends PlayList{
 		authorizedUser = pAuthorizedUser;
 	}
 
+	@Override
 	public String addSongToPlaylist(User objUser, Song objSong){
 		String message = "";
 		if(objUser.getUserName().equalsIgnoreCase(authorizedUser.getUserName())){
@@ -30,6 +31,6 @@ public class PrivatePL extends PlayList{
 	}
 
 	public String toString(){
-		return super.toString()+"\n                     **  Tipo: Privada"+"\n                     **  Usuario con acceso: "+authorizedUser.getUserName();
+		return super.toString()+"\n                                          **  Tipo: Privada"+"\n                                          **  Usuario con acceso: "+authorizedUser.getUserName();
 	}	
 }

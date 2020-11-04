@@ -181,11 +181,11 @@ public class PlayList{
 				message+=getGenres()[k]+" ";
 			}	
 		}
-		return  "\n                     *************************************"+
-				"\n                     ************* PlayList **************"+
-				"\n                     **  Titulo: "+name+
-				"\n                     **  Duracion: "+calculateDuration()+
-				"\n                     **  Genero: "+message;
+		return  "\n                                          *************************************"+
+				"\n                                          ************* PlayList **************"+
+				"\n                                          **  Titulo: "+name+
+				"\n                                          **  Duracion: "+calculateDuration()+
+				"\n                                          **  Genero: "+message;
 	}
 }
 
