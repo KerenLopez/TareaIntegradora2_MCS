@@ -37,7 +37,7 @@ public class RestrictedPL extends PlayList{
 		String message = "";
 		boolean find = false;
 		for(int k=0; k<authorizedUsers.length && !find;k++){
-			if(objUser.getUserName().equalsIgnoreCase(authorizedUsers[k].getUserName())){
+			if(authorizedUsers[k]!=null && objUser.getUserName().equalsIgnoreCase(authorizedUsers[k].getUserName())){
 				message = super.addSongToPlaylist(objUser,objSong);
 				find = true;
 			} 
