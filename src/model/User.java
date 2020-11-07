@@ -11,65 +11,88 @@ public class User{
 	//Relationships
 	private Category userCategory;
 
-	//Getters and Setters of all the atributes or relationships
+	//Getters and Setters 
 
 	/**
-	* This method returns the user's name. <br>
-	* @return out a <code> String </code> variable that contains the user's name.
+	* This method returns the name of a user. <br>
+	* <b>name</b>: getUserName <br>
+	* @return String <code> userName </code> that is a variable with the name of a user.
 	*/
+
 	public String getUserName(){
 		return userName;
 	}
+
 	/**
-	* this method modifies the user's name. <br>
-	* <b>post</b>: the user's name has been changed. <br>
+	* this method modifies the name of a user. <br>
+	* <b>name</b>: setUserName <br>
+	* <b>post</b>: the name of the user has been changed. <br>
 	* @param pUserName is a String variable.
 	*/
+
 	public void setUserName(String pUserName){
 		userName = pUserName;
 	}
+
 	/**
-	* This method returns the user's password. <br>
-	* @return out a <code> String </code> variable that contains the user's password.
+	* This method returns the password of a user. <br>
+	* <b>name</b>: getPassword <br>
+	* @return Srting <code> password </code> that is variable with the password of a user.
 	*/
+
 	public String getPassword(){
 		return password;
 	}
+
 	/**
-	* this method modifies the user's password. <br>
-	* <b>post</b>: the user's password has been changed. <br>
+	* this method modifies the password of a user. <br>
+	* <b>name</b>: setPassword <br>
+	* <b>post</b>: the password of the user has been changed. <br>
 	* @param pPassword is a String variable.
 	*/
+
 	public void setPassword(String pPassword){
 		password = pPassword;
 	}
+
 	/**
-	* This method returns the user's age. <br>
-	* @return out an <code> integer </code> variable that contains the user's age.
+	* This method returns the age of a user. <br>
+	* <b>name</b>: getAge <br>
+	* @return integer <code> age </code> that is a variable with the age of a user.
 	*/
+
 	public int getAge(){
 		return age;
 	}
+
 	/**
-	* this method modifies the user's age. <br>
-	* <b>post</b>: the user's age has been changed. <br>
+	* this method modifies the age of a user. <br>
+	* <b>name</b>: setAge <br>
+	* <b>post</b>: the age of the user has been changed. <br>
 	* @param pAge is an integer variable.
 	*/
+
 	public void setAge(int pAge){
 		age = pAge;
 	}
+
 	/**
-	* This method returns the user's category. <br>
-	* @return out an <code> Category </code> object that contains the user's rank.
+	* This method returns the category of a user. <br>
+	* <b>name</b>: getUserCategory <br>
+	* @return Category <code> userCategory </code> that is a constant that represents the rank of a user.
 	*/
+
 	public Category getUserCategory(){
 		return userCategory;
 	}
+
 	/**
-	* this method modifies the user's category. <br>
-	* <b>post</b>: the user's rank has been changed. <br>
-	* @param pUserCategory is a Category object.
+	* this method modifies the category of a user. <br>
+	* <b>name</b>: setUserCategory <br>
+	* <b>post</b>: the category of the user has been changed. <br>
+	* @param pUserCategory is a Category constant.
 	*/
+
 	public void setUserCategory(Category pUserCategory){
 		userCategory = pUserCategory;
 	}
@@ -81,10 +104,11 @@ public class User{
 	* <b>name</b>: User <br>
 	* <b>pre</b>: the variables pUserName, pPassword and pAge are already inicializated. <br>
 	* <b>post</b>: the relationships and all the atributes of the class were inicializated. <br>
-	* @param pUserName is a String variable that.
-	* @param pPassword is a String variable that.
-	* @param pAge is an integer variable that.
+	* @param pUserName is a String variable that contains the name of a user.
+	* @param pPassword is a String variable that contains the password of a user.
+	* @param pAge is an integer variable that contains the age of a user.
 	*/
+
 	public User(String pUserName, String pPassword, int pAge){
 		userName = pUserName;
 		password = pPassword;
@@ -92,10 +116,13 @@ public class User{
 		userCategory = Category.NEWBIE;
 		numSongsAddToPool = 0;
 	}
+
 	/**
-	* this method . <br>
+	* this method changes the category of a user. <br>
+	* <b>name</b>: changeUserCategory <br>
 	* <b>post</b>: the category of the user has been changed. <br>
 	*/
+
 	public void changeUserCategory(){ 
 		numSongsAddToPool+=1;
 

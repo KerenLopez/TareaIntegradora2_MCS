@@ -4,17 +4,22 @@ import java.util.Scanner;
 
 public class Main{
 
+	//Global variable
 	public Scanner lector;
 
-	//Atributes
+	//Relationship
 	private MCS mainMCS;
 
-	//Builder Method
+	/**
+	* Builder method <br>
+	* <b>name</b>: Main <br>
+	* <b>post</b>: The relationship and the global variable were inicializated. <br>
+	*/
+
 	public Main(){
 		lector = new Scanner(System.in);
 		mainMCS = new MCS();
-	}
-	//End Builder	
+	}	
 
 	public static void main(String[] args){
 
@@ -63,6 +68,13 @@ public class Main{
 			option = objMain.menu();
 		} while(option!= 9);
 	}
+
+	/**
+	* This method displays a menu and appeals to other methods depending on the option chosen by the user. <br>
+	* <b>name</b>: menu.<br>
+ 	* <b>post</b>: the option that the user chose was returned. <br>
+ 	* @return integer <code> option </code> that is a variable with a number that the user selected.
+	*/
 
 	public int menu(){
 		int option = 0;
@@ -140,6 +152,12 @@ public class Main{
 		} return option;
     }
 
+    /**
+	* This method asks for all the features of an user to create a new one. <br>
+	* <b>name</b>: addUser.<br>
+ 	* <b>post</b>: All the information that is necessary to create a new user was asked. <br>
+	*/
+
 	public void addUser(){
 		String name = "", password, message;
 		int age;
@@ -166,21 +184,36 @@ public class Main{
 			System.out.println("\nIngrese una contrasenia: ");
 			password = lector.nextLine();
 			System.out.println("\nIngrese su edad: ");
-			age = lector.nextInt();
+			age = lector.nextInt();lector.nextLine();
 			message = mainMCS.createUser(name, password, age);
 			System.out.println(message);
-		} while(message.equals("El usuario ya se encuentra registrado, intentelo nuevamente"));
+			if(message.equals("\nEl usuario ya se encuentra registrado, intentelo nuevamente")){
+				System.out.println("\n***********************************************************************************************************************\n");
+			}
+		} while(message.equals("\nEl usuario ya se encuentra registrado, intentelo nuevamente"));
 	}
+
+	/**
+	* This method shows the users that are register in the MCS. <br>
+	* <b>name</b>: displayUsers.<br>
+ 	* <b>post</b>: All the users of the MCS were displayed. <br>
+	*/
 
 	public void displayUsers(){
 		String message = mainMCS.showUsers();
 		System.out.println(
 			"\n************************************************************************************************************************\n"+
-			"                                                 Lista de usuarios registrados"+
+			"                                               Lista de usuarios registrados"+
 			"\n************************************************************************************************************************\n"
 		);
 		System.out.println(message);
 	}
+
+	/**
+	* This method asks for all the features that a song has to include it in the pool. <br>
+	* <b>name</b>: addSongToPool.<br>
+ 	* <b>post</b>: All the information that is necessary to add a new song was asked. <br>
+	*/
 
 	public void addSongToPool(){
 		String title, artist, date, message, nameUser;
@@ -220,8 +253,17 @@ public class Main{
 			} while(genre!=1 && genre!=2 && genre!=3 && genre!=4 && genre!=5 && genre!=6);
 			message = mainMCS.addSongsToPool(nameUser,title, artist, date, minutes, seconds, genre);
 			System.out.println(message);
+			if(!message.equals("\nLa cancion ha sido agregada exitosamente al pool de canciones")){
+				System.out.println("\n***********************************************************************************************************************\n");
+			}	
 		} while(!message.equals("\nLa cancion ha sido agregada exitosamente al pool de canciones"));		
 	}
+
+	/**
+	* This method shows the songs that were added in the pool. <br>
+	* <b>name</b>: displayPoolSongs.<br>
+ 	* <b>post</b>: All the songs of the pool were shown. <br>
+	*/
 
 	public void displayPoolSongs(){
 		String message = mainMCS.showSongsInPool();
@@ -233,8 +275,14 @@ public class Main{
 		);
 	}
 
+	/**
+	* This method asks for all the features of a playlist depending on its type to create a new one. <br>
+	* <b>name</b>: createPlaylist.<br>
+ 	* <b>post</b>: All the information that is necessary to create a playlist was asked. <br>
+	*/
+
 	public void createPlaylist(){
-		int option;
+		int option, numAddUsers;
 		String nameUser, namePlaylist, message;
 		String[] nameUsersPlaylistR = new String[5];
 		do{
@@ -259,27 +307,41 @@ public class Main{
 				System.out.println("\nIngrese el nombre que le va a dar a su nueva playlist: ");
 				namePlaylist = lector.nextLine();	
 				message = mainMCS.addPlaylist(namePlaylist,nameUser,option);
+				System.out.println(message);
 				if(option==2 && message.equals("\nLa playlist fue creada exitosamente")){
 					System.out.println("\nRecuerde que usted sera el unico que tendra acceso a esta playlist");
-				}
-				System.out.println(message);	
+				} else{
+					System.out.println("\n***********************************************************************************************************************\n");
+				}	
 			} else{	
 				System.out.println("\nIngrese su nombre de usuario: ");
-				nameUsersPlaylistR[0] = lector.nextLine();				
-				for(int k=1;k<nameUsersPlaylistR.length;k++){
+				nameUsersPlaylistR[0] = lector.nextLine();
+				do{
+					System.out.println("\nIngrese el numero de usuarios que va a registrar para que tengan acceso a su playlist, recuerde que tiene permitido solamente 4: ");
+					numAddUsers = lector.nextInt();lector.nextLine();
+				}while(numAddUsers!=1 && numAddUsers!=2 && numAddUsers!=3 && numAddUsers!=4);					
+				for(int k=1;k<numAddUsers+1;k++){
 					System.out.println("\nIngrese el nombre del usuario #"+(k+1)+" que va a tener acceso a esta playlist: ");
 					nameUsersPlaylistR[k] = lector.nextLine();
 				}
 				System.out.println("\nIngrese el nombre que le va a dar a su nueva playlist: ");
 				namePlaylist = lector.nextLine();
-				message = mainMCS.addPlaylist(namePlaylist,nameUsersPlaylistR);
+				message = mainMCS.addPlaylist(namePlaylist,nameUsersPlaylistR,numAddUsers);
+				System.out.println(message);
 				if(message.equals("\nLa playlist fue creada exitosamente")){
 					System.out.println("\nRecuerde que usted y las personas que ingreso seran las unicas con acceso a esta playlist");
+				}else{
+					System.out.println("\n***********************************************************************************************************************\n");
 				}
-				System.out.println(message);
 			}	
 		} while(!message.equals("\nLa playlist fue creada exitosamente"));	
 	}
+
+	/**
+	* This method asks to the user everything needed to add a song of the pool in a playlist. <br>
+	* <b>name</b>: addSongToPlaylist.<br>
+ 	* <b>post</b>: the user typed all that is necessary to add a song of the pool in a playlist. <br>
+	*/
 
 	public void addSongToPlaylist(){
 		String nameUser, namePlaylist, nameSong, artistSong, message;
@@ -300,6 +362,12 @@ public class Main{
 		System.out.println(message);
 	}
 
+	/**
+	* This method shows the playlists that were created in the MCS. <br>
+	* <b>name</b>: displayPlaylists.<br>
+ 	* <b>post</b>: All the playlists were shown. <br>
+	*/
+
 	public void displayPlaylists(){
 		String message = mainMCS.showPlaylists();
 		System.out.println(
@@ -309,6 +377,12 @@ public class Main{
 			message
 		);
 	}
+
+	/**
+	* This method asks to the user what grade wants to give to a public playlist. <br>
+	* <b>name</b>: ratePlaylist.<br>
+ 	* <b>post</b>: The grade of a public playlist was asked. <br>
+	*/
 
 	public void ratePlaylist(){
 		String nameUser, namePlaylist, message;
@@ -332,5 +406,4 @@ public class Main{
 		message = mainMCS.ratePublicPlaylists(nameUser, namePlaylist, grade);
 		System.out.println(message);
 	}
-
 }
